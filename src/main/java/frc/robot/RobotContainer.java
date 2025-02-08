@@ -43,12 +43,12 @@ public class RobotContainer {
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
   public static final PneumaticsSS rc_PneumaticsSS = new PneumaticsSS();
   public static final ProcessorWheelSS rc_processorwheelSS = new ProcessorWheelSS();
-  public static final PIDSS rc_pidSS = new PIDSS();
+  //public static final PIDSS rc_pidSS = new PIDSS();
 
   // The robot's commands
   public static final PneumaticsC rc_PneumaticsC = new PneumaticsC(rc_PneumaticsSS);
   public static final ProcessorWheelC rc_processorwheelC = new ProcessorWheelC(rc_processorwheelSS);
-  public static final ZeroC rc_zeroC = new ZeroC(rc_pidSS);
+  //public static final ZeroC rc_zeroC = new ZeroC(rc_pidSS);
 
   // Other instantiations
   public static final PneumaticHub PH = new PneumaticHub(1);
@@ -101,9 +101,9 @@ public class RobotContainer {
     m_operatorController.x().onTrue(rc_PneumaticsC);
     m_operatorController.y().whileTrue(rc_processorwheelC);
     m_operatorController.b().whileTrue(rc_processorwheelC);
-    m_operatorController.leftBumper().onTrue(new PIDC(rc_pidSS, () -> 100));
-    m_operatorController.rightBumper().onTrue(new PIDC(rc_pidSS, () -> 0));
-    m_operatorController.start().onTrue(rc_zeroC);
+    //m_operatorController.leftBumper().onTrue(new PIDC(rc_pidSS, () -> 100));
+    //m_operatorController.rightBumper().onTrue(new PIDC(rc_pidSS, () -> 0));
+    //m_operatorController.start().onTrue(rc_zeroC);
   }
 
   @SuppressWarnings("null")

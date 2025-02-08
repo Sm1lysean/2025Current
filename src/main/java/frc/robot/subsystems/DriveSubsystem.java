@@ -74,10 +74,10 @@ public class DriveSubsystem extends SubsystemBase {
     public DriveSubsystem() {
      // All other subsystem initialization
     // ...
-
+/* 
     // Load the RobotConfig from the GUI settings. You should probably
     // store this in your Constants file
-    RobotConfig config = new RobotConfig(74, 6.8, new ModuleConfig(Constants.ModuleConstants.kWheelDiameterMeters / 2, 0.5, getHeading(), DCMotor.getNEO(4), 20, 4));
+    RobotConfig config = new RobotConfig(74, 6.8, new ModuleConfig(Constants.ModuleConstants.kWheelDiameterMeters / 2, 0.5, getHeading(), DCMotor.getNEO(1), 20, 1));
 
     // Configure AutoBuilder last
     AutoBuilder.configure(
@@ -102,7 +102,7 @@ public class DriveSubsystem extends SubsystemBase {
               return false;
             },
             this // Reference to this subsystem to set requirements
-    );
+    );*/
   }
 
   @Override

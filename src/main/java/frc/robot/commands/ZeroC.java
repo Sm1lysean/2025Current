@@ -8,7 +8,7 @@ import frc.robot.subsystems.PIDSS;
 public class ZeroC extends Command{
     
     public ZeroC(PIDSS subsystem) {
-        subsystem = RobotContainer.rc_pidSS;
+        //subsystem = RobotContainer.rc_pidSS;
         addRequirements(subsystem);
       }
     
@@ -17,12 +17,12 @@ public class ZeroC extends Command{
     
       @Override
       public void execute() {
-        RobotContainer.rc_pidSS.Zero();
+        //RobotContainer.rc_pidSS.Zero();
       }
     
       @Override
       public void end(boolean interrupted) {
-        RobotContainer.rc_pidSS.MotorStop();
+        //RobotContainer.rc_pidSS.MotorStop();
       }
     
       @Override
