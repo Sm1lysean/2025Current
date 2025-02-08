@@ -48,7 +48,7 @@ public class RobotContainer {
   // The robot's commands
   public static final PneumaticsC rc_PneumaticsC = new PneumaticsC(rc_PneumaticsSS);
   public static final ProcessorWheelC rc_processorwheelC = new ProcessorWheelC(rc_processorwheelSS);
-  public static final ZeroC rc_zeroC = new ZeroC();
+  public static final ZeroC rc_zeroC = new ZeroC(rc_pidSS);
 
   // Other instantiations
   public static final PneumaticHub PH = new PneumaticHub(1);
