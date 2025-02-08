@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
@@ -74,10 +75,17 @@ public class DriveSubsystem extends SubsystemBase {
     public DriveSubsystem() {
      // All other subsystem initialization
     // ...
-/* 
     // Load the RobotConfig from the GUI settings. You should probably
     // store this in your Constants file
-    RobotConfig config = new RobotConfig(74, 6.8, new ModuleConfig(Constants.ModuleConstants.kWheelDiameterMeters / 2, 0.5, getHeading(), DCMotor.getNEO(1), 20, 1));
+    RobotConfig config = new RobotConfig(
+      74, 
+      6.8, 
+      new ModuleConfig(Constants.ModuleConstants.kWheelDiameterMeters / 2, 0.5, getHeading(), DCMotor.getNEO(1), 20, 4),
+      new Translation2d(27 / 2, 27 / 2),
+      new Translation2d(27 / 2, -27 / 2),
+      new Translation2d(-27 / 2, 27 / 2),
+      new Translation2d(-27 / 2, -27 / 2)
+      );
 
     // Configure AutoBuilder last
     AutoBuilder.configure(
@@ -102,7 +110,7 @@ public class DriveSubsystem extends SubsystemBase {
               return false;
             },
             this // Reference to this subsystem to set requirements
-    );*/
+    );
   }
 
   @Override
