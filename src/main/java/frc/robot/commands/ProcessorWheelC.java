@@ -1,14 +1,12 @@
 package frc.robot.commands;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-
 import edu.wpi.first.wpilibj2.command.Command;
-
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.*;
 
 public class ProcessorWheelC extends Command {
-  
+
   public ProcessorWheelC(ProcessorWheelSS subsystem) {
     subsystem = RobotContainer.rc_processorwheelSS;
     addRequirements(subsystem);

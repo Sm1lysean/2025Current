@@ -1,6 +1,6 @@
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
-// Access the hidden files 
+// Access the hidden files
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot;
@@ -21,7 +21,7 @@ import edu.wpi.first.math.util.Units;
 public final class Constants {
 
   public static final int Wrist = 1;
-  
+
   public static final double kP = 0.7;
   public static final double kI = 0;
   public static final double kD = 0;
@@ -29,9 +29,7 @@ public final class Constants {
   public static final class PneumaticsConstants {
     public static final int forwardendSol = 9;
     public static final int reverseendSol = 8;
-    
   }
-
 
   public static final class CoralSubsystemConstants {
     public static final int kElevatorMotorCanId = 4;

@@ -4,41 +4,39 @@
 
 package frc.robot.subsystems;
 
-import frc.robot.Constants;
-
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class PneumaticsSS extends SubsystemBase {
   /** Creates a new PneumaticsSS. */
-
   public final DoubleSolenoid pneumaticTest;
 
-
   public PneumaticsSS() {
-    pneumaticTest = new DoubleSolenoid(PneumaticsModuleType.REVPH, Constants.PneumaticsConstants.forwardendSol, Constants.PneumaticsConstants.reverseendSol);
+    pneumaticTest =
+        new DoubleSolenoid(
+            PneumaticsModuleType.REVPH,
+            Constants.PneumaticsConstants.forwardendSol,
+            Constants.PneumaticsConstants.reverseendSol);
     pneumaticTest.set(Value.kReverse);
   }
 
-
   @Override
   public void periodic() {
-    //This method will be called once per scheduler run
+    // This method will be called once per scheduler run
     pneumaticTest();
     SmartDashboard.putData("Test Status", pneumaticTest);
   }
 
-
-
   public void Toggle() {
-    pneumaticTest.toggle();;
+    pneumaticTest.toggle();
+    ;
   }
 
-
-  public void pneumaticTest(){
+  public void pneumaticTest() {
     pneumaticTest.get();
   }
 

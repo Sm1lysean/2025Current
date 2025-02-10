@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.*;
 import java.util.function.DoubleSupplier;
 
-public class PIDC extends Command{
+public class PIDC extends Command {
   public final PIDSS m_elev;
   private final DoubleSupplier m_desiredVelocity;
 
@@ -23,7 +23,7 @@ public class PIDC extends Command{
 
   @Override
   public void execute() {
-    m_elev.setPosition(m_desiredVelocity.getAsDouble()); 
+    m_elev.setPosition(m_desiredVelocity.getAsDouble());
   }
 
   @Override

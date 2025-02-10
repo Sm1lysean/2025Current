@@ -1,6 +1,6 @@
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
-// Access the hidden files 
+// Access the hidden files
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot;
@@ -8,9 +8,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.simulation.BatterySim;
 import edu.wpi.first.wpilibj.simulation.RoboRioSim;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveSubsystem;
 
 /**
@@ -56,7 +56,7 @@ public class Robot extends TimedRobot {
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
 
-    SmartDashboard.putNumber("Angle", -( DriveSubsystem.m_gyro.getAngle() % 360));
+    SmartDashboard.putNumber("Angle", -(DriveSubsystem.m_gyro.getAngle() % 360));
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
