@@ -31,6 +31,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import java.util.List;
 
+import com.pathplanner.lib.commands.PathPlannerAuto;
+
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -159,6 +161,6 @@ public class RobotContainer {
     m_robotDrive.resetOdometry(exampleTrajectory.getInitialPose());
 
     // Run path following command, then stop at the end.
-    return null;
+    return new PathPlannerAuto("Auto Test");
   }
 }
