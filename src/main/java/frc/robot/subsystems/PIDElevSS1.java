@@ -7,12 +7,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class PIDSS extends SubsystemBase {
+public class PIDElevSS1 extends SubsystemBase {
 
-  public final SparkMax Motor = new SparkMax(9, MotorType.kBrushless);
+  public final SparkMax Motor1 = new SparkMax(9, MotorType.kBrushless);
+  public final SparkMax Motor2 = new SparkMax(10, MotorType.kBrushless);
 
-  private final PIDController Velo_PID =
-      new PIDController(Constants.kP, Constants.kI, Constants.kD);
+
+  private final PIDController Velo_PID = new PIDController(Constants.kP, Constants.kI, Constants.kD);
   private final PIDController Pos_PID = new PIDController(Constants.kP, Constants.kI, Constants.kD);
 
   private boolean manual = true;
@@ -23,28 +24,27 @@ public class PIDSS extends SubsystemBase {
   private double voltage;
 
   public void MotorStop() {
-    Motor.set(0);
+    Motor1.set(0);
   }
 
   public void Zero() {
-    Motor.set(-0.3);
+    Motor1.set(-0.3);
   }
 
   // Setup for the PID SS
-  public PIDSS() {
-    Motor.setInverted(true);
-    Motor.getEncoder().setPosition(0);
+  public PIDElevSS1() {
+    Motor1.setInverted(true);
+    Motor1.getEncoder().setPosition(0);
   }
 
   public void AutoMotor(double speed) {
-    Motor.set(speed);
+    Motor1.set(speed);
   }
 
-  @Override
   public void periodic() {
-    SmartDashboard.putNumber("Motor Position", getPosition());
-    SmartDashboard.putNumber("Desired Motor Velcity", desiredVelocity);
-    SmartDashboard.putNumber("Voltage", getVoltage());
+    SmartDashboard.putNumber("Elevator Position", getPosition());
+    SmartDashboard.putNumber("Desired Elevator Velocity", desiredVelocity);
+    SmartDashboard.putNumber("Elevator Voltage", getVoltage());
 
     setVoltage();
   }
@@ -63,7 +63,7 @@ public class PIDSS extends SubsystemBase {
 
     voltage = PIDVoltage;
 
-    Motor.setVoltage(PIDVoltage);
+    Motor1.setVoltage(PIDVoltage);
   }
 
   public double getVoltage() {
@@ -83,10 +83,10 @@ public class PIDSS extends SubsystemBase {
   }
 
   public double getPosition() {
-    return Motor.getEncoder().getPosition() * 8;
+    return Motor1.getEncoder().getPosition() * 8;
   }
 
   public double getVelocity() {
-    return Motor.getEncoder().getVelocity() * (2 / 15);
+    return Motor1.getEncoder().getVelocity() * (2 / 15);
   }
 }

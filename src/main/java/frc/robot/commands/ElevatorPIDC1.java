@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.*;
 import java.util.function.DoubleSupplier;
 
-public class PIDC extends Command {
-  public final PIDSS m_elev;
+public class ElevatorPIDC1 extends Command {
+  public final PIDElevSS1 m_elev;
   private final DoubleSupplier m_desiredVelocity;
 
-  public PIDC(PIDSS subsystem, DoubleSupplier desiredVelocity) {
+  public ElevatorPIDC1(PIDElevSS1 subsystem, DoubleSupplier desiredVelocity) {
     m_elev = subsystem;
     m_desiredVelocity = desiredVelocity;
     addRequirements(subsystem);

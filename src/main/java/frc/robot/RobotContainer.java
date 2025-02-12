@@ -6,6 +6,8 @@
 package frc.robot;
 
 import com.pathplanner.lib.commands.PathPlannerAuto;
+import com.pathplanner.lib.events.EventTrigger;
+
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
@@ -41,12 +43,14 @@ public class RobotContainer {
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
   public static final PneumaticsSS rc_PneumaticsSS = new PneumaticsSS();
   public static final ProcessorWheelSS rc_processorwheelSS = new ProcessorWheelSS();
-  // public static final PIDSS rc_pidSS = new PIDSS();
+  public static final PIDElevSS1 rc_pidElevSS1 = new PIDElevSS1();
+  public static final PIDElevSS2 rc_pidElevSS2 = new PIDElevSS2();
+  public static final PIDAlgaeSS rc_pidAlgaeSS = new PIDAlgaeSS();
 
   // The robot's commands
   public static final PneumaticsC rc_PneumaticsC = new PneumaticsC(rc_PneumaticsSS);
-  public static final ProcessorWheelC rc_processorwheelC = new ProcessorWheelC(rc_processorwheelSS);
-  // public static final ZeroC rc_zeroC = new ZeroC(rc_pidSS);
+  //public static final ProcessorWheelC rc_processorwheelC = new ProcessorWheelC(rc_processorwheelSS);
+  public static final ElevatorZeroC rc_ElevatorZeroC = new ElevatorZeroC(rc_pidElevSS1);
 
   // Other instantiations
   public static final PneumaticHub PH = new PneumaticHub(1);
@@ -87,20 +91,22 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     // Driver controller button commands
-    //
-    // Command to driver the robot
     m_driverController.leftStick().whileTrue(m_robotDrive.setXCommand());
-    // Start Button -> Zero swerve heading
     m_driverController.start().onTrue(m_robotDrive.zeroHeadingCommand());
+    // Algae PID
+    m_driverController.povUp().onTrue(new AlgaePIDC(rc_pidAlgaeSS, () -> 100));
+    m_driverController.povDown().onTrue(new AlgaePIDC(rc_pidAlgaeSS, () -> 0));
 
     // Operator controller button commands
-    //
     m_operatorController.x().onTrue(rc_PneumaticsC);
-    m_operatorController.y().whileTrue(rc_processorwheelC);
-    m_operatorController.b().whileTrue(rc_processorwheelC);
-    // m_operatorController.leftBumper().onTrue(new PIDC(rc_pidSS, () -> 100));
-    // m_operatorController.rightBumper().onTrue(new PIDC(rc_pidSS, () -> 0));
-    // m_operatorController.start().onTrue(rc_zeroC);
+    // Elevator PID
+    m_operatorController.povUp().onTrue(new ElevatorPIDC1(rc_pidElevSS1, () -> 100));
+    m_operatorController.povRight().onTrue(new ElevatorPIDC1(rc_pidElevSS1, () -> 50));
+    m_operatorController.povDown().onTrue(new ElevatorPIDC1(rc_pidElevSS1, () -> 0));
+    m_operatorController.povUp().onTrue(new ElevatorPIDC2(rc_pidElevSS2, () -> 100));
+    m_operatorController.povRight().onTrue(new ElevatorPIDC2(rc_pidElevSS2, () -> 50));
+    m_operatorController.povDown().onTrue(new ElevatorPIDC2(rc_pidElevSS2, () -> 0));
+    m_operatorController.start().onTrue(rc_ElevatorZeroC);
   }
 
   @SuppressWarnings("null")
@@ -152,7 +158,7 @@ public class RobotContainer {
             m_robotDrive::setModuleStates,
             m_robotDrive);
 
-    // Reset odometry to the starting pose of the trajectory.
+    // Reset odometer to the starting pose of the trajectory.
     m_robotDrive.resetOdometry(exampleTrajectory.getInitialPose());
 
     // Run path following command, then stop at the end.
