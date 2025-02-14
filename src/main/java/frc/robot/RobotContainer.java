@@ -99,6 +99,7 @@ public class RobotContainer {
 
     // Operator controller button commands
     m_operatorController.x().onTrue(rc_PneumaticsC);
+    m_operatorController.y().onTrue(rc_PneumaticsC);
     // Elevator PID
     m_operatorController.povUp().onTrue(new ElevatorPIDC1(rc_pidElevSS1, () -> 100));
     m_operatorController.povRight().onTrue(new ElevatorPIDC1(rc_pidElevSS1, () -> 50));

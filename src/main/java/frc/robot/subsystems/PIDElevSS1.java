@@ -10,8 +10,6 @@ import frc.robot.Constants;
 public class PIDElevSS1 extends SubsystemBase {
 
   public final SparkMax Motor1 = new SparkMax(9, MotorType.kBrushless);
-  public final SparkMax Motor2 = new SparkMax(10, MotorType.kBrushless);
-
 
   private final PIDController Velo_PID = new PIDController(Constants.kP, Constants.kI, Constants.kD);
   private final PIDController Pos_PID = new PIDController(Constants.kP, Constants.kI, Constants.kD);

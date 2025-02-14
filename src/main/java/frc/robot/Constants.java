@@ -27,8 +27,10 @@ public final class Constants {
   public static final double kD = 0;
 
   public static final class PneumaticsConstants {
-    public static final int forwardendSol = 9;
-    public static final int reverseendSol = 8;
+    public static final int forwardGuideSol = 1;
+    public static final int reverseGuideSol = 2;
+    public static final int forwardClimbSol = 3;
+    public static final int reverseClimbSol = 4;
   }
 
   public static final class CoralSubsystemConstants {

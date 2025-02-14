@@ -13,34 +13,45 @@ import frc.robot.Constants;
 
 public class PneumaticsSS extends SubsystemBase {
   /** Creates a new PneumaticsSS. */
-  public final DoubleSolenoid pneumaticTest;
+  public final DoubleSolenoid AlgaeGuide;
+  public final DoubleSolenoid Climber;
 
   public PneumaticsSS() {
-    pneumaticTest =
+    AlgaeGuide =
         new DoubleSolenoid(
             PneumaticsModuleType.REVPH,
-            Constants.PneumaticsConstants.forwardendSol,
-            Constants.PneumaticsConstants.reverseendSol);
-    pneumaticTest.set(Value.kReverse);
+            Constants.PneumaticsConstants.forwardGuideSol,
+            Constants.PneumaticsConstants.reverseGuideSol);
+    Climber =
+            new DoubleSolenoid(
+                PneumaticsModuleType.REVPH,
+                Constants.PneumaticsConstants.forwardClimbSol,
+                Constants.PneumaticsConstants.reverseClimbSol);
+    AlgaeGuide.set(Value.kReverse);
+    Climber.set(Value.kReverse);
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    pneumaticTest();
-    SmartDashboard.putData("Test Status", pneumaticTest);
+    AlgaeStatus();
+    ClimberStatus();
+    SmartDashboard.putData("Test Status", AlgaeGuide);
   }
 
-  public void Toggle() {
-    pneumaticTest.toggle();
-    ;
+  public void ToggleGuide() {
+    AlgaeGuide.toggle();
   }
 
-  public void pneumaticTest() {
-    pneumaticTest.get();
+  public void ToggleClimb() {
+    Climber.toggle();
   }
 
-  public void Reverse() {
-    pneumaticTest.set(Value.kReverse);
+  public void AlgaeStatus() {
+    AlgaeGuide.get();
+  }
+
+  public void ClimberStatus() {
+    Climber.get();
   }
 }
