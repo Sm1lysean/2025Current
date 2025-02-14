@@ -3,9 +3,8 @@ package frc.robot.commands;
 import java.util.function.DoubleSupplier;
 
 import frc.robot.subsystems.PIDAlgaeSS;
+
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.*;
-import java.util.function.DoubleSupplier;
 
 public class AlgaePIDC extends Command{
   public final PIDAlgaeSS m_algae;
