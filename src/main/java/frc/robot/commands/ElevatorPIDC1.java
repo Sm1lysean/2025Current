@@ -12,11 +12,11 @@ import java.util.function.DoubleSupplier;
 
 public class ElevatorPIDC1 extends Command {
   public final PIDElevSS1 m_elev;
-  private final DoubleSupplier m_desiredVelocity;
+  private final DoubleSupplier desiredposition;
 
-  public ElevatorPIDC1(PIDElevSS1 subsystem, DoubleSupplier desiredVelocity) {
+  public ElevatorPIDC1(PIDElevSS1 subsystem, DoubleSupplier desired) {
     m_elev = subsystem;
-    m_desiredVelocity = desiredVelocity;
+    desiredposition = desired;
     addRequirements(subsystem);
   }
 
@@ -25,7 +25,7 @@ public class ElevatorPIDC1 extends Command {
 
   @Override
   public void execute() {
-    m_elev.setPosition(m_desiredVelocity.getAsDouble());
+    m_elev.setPosition(desiredposition.getAsDouble());
   }
 
   @Override

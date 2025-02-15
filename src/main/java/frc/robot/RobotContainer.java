@@ -44,7 +44,6 @@ public class RobotContainer {
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
   public static final PneumaticsSS rc_PneumaticsSS = new PneumaticsSS();
   public static final PIDElevSS1 rc_pidElevSS1 = new PIDElevSS1();
-  public static final PIDElevSS2 rc_pidElevSS2 = new PIDElevSS2();
   public static final PIDAlgaeSS rc_pidAlgaeSS = new PIDAlgaeSS();
   public static final MotorsSS rc_MotorSS = new MotorsSS();
 
@@ -106,9 +105,6 @@ public class RobotContainer {
     m_operatorController.povUp().onTrue(new ElevatorPIDC1(rc_pidElevSS1, () -> 100));
     m_operatorController.povRight().onTrue(new ElevatorPIDC1(rc_pidElevSS1, () -> 50));
     m_operatorController.povDown().onTrue(new ElevatorPIDC1(rc_pidElevSS1, () -> 0));
-    m_operatorController.povUp().onTrue(new ElevatorPIDC2(rc_pidElevSS2, () -> 100));
-    m_operatorController.povRight().onTrue(new ElevatorPIDC2(rc_pidElevSS2, () -> 50));
-    m_operatorController.povDown().onTrue(new ElevatorPIDC2(rc_pidElevSS2, () -> 0));
     m_operatorController.start().onTrue(rc_ElevatorZeroC);
     // Algae Control
     m_operatorController.a().whileTrue(rc_AlgaeInC);

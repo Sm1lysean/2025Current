@@ -12,6 +12,8 @@ import frc.robot.Constants;
 public class PIDElevSS1 extends SubsystemBase {
 
   public final SparkMax Motor1 = new SparkMax(9, MotorType.kBrushless);
+  public final SparkMax Motor2 = new SparkMax(10, MotorType.kBrushless);
+
 
   private final PIDController Velo_PID = new PIDController(Constants.kP, Constants.kI, Constants.kD);
   private final PIDController Pos_PID = new PIDController(Constants.kP, Constants.kI, Constants.kD);
@@ -25,20 +27,24 @@ public class PIDElevSS1 extends SubsystemBase {
 
   public void MotorStop() {
     Motor1.set(0);
+    Motor2.set(0);
   }
 
   public void Zero() {
     Motor1.set(-0.3);
+    Motor2.set(-0.3);
   }
 
   // Setup for the PID SS
   public PIDElevSS1() {
     Motor1.setInverted(true);
     Motor1.getEncoder().setPosition(0);
-  }
+    Motor2.getEncoder().setPosition(0);
+    }
 
   public void AutoMotor(double speed) {
     Motor1.set(speed);
+    Motor2.set(speed);
   }
 
   public void periodic() {
@@ -64,6 +70,8 @@ public class PIDElevSS1 extends SubsystemBase {
     voltage = PIDVoltage;
 
     Motor1.setVoltage(PIDVoltage);
+    Motor2.setVoltage(PIDVoltage);
+
   }
 
   public double getVoltage() {
